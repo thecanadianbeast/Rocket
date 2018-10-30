@@ -4,13 +4,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Rocket.Models
 {
-    public partial class david_appContext : DbContext
+    public partial class David_appContext : DbContext
     {
-        public david_appContext()
+        public David_appContext()
         {
         }
 
-        public david_appContext(DbContextOptions<david_appContext> options)
+        public David_appContext(DbContextOptions<David_appContext> options)
             : base(options)
         {
         }
@@ -33,7 +33,7 @@ namespace Rocket.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+// #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseMySql("server=codeboxx.cq6zrczewpu2.us-east-1.rds.amazonaws.com;database=david_app;user=codeboxx;password=Codeboxx1!;");
             }
         }
