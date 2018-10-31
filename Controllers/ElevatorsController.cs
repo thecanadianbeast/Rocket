@@ -17,6 +17,7 @@ namespace Rocket.Controllers {
             _context = context;
         }
 
+         // GET api/elevators/5
         [HttpGet ("{id}", Name = "GetElevators")]
         public ActionResult GetById (string Status, long id) {
             var item = _context.Elevators.Find (id);
@@ -28,6 +29,7 @@ namespace Rocket.Controllers {
             return Content (json.ToString (), "application/json");
         }
 
+        // GET api/elevators/list
         [HttpGet]
         public ActionResult<List<Elevators>> GetAll () {
             var list = _context.Elevators.ToList ();
@@ -45,7 +47,7 @@ namespace Rocket.Controllers {
             return list_alarm_inac;
         }
 
-        // PUT api/batteries/5
+        // PUT api/elevators
         [HttpPut ("{id}")]
         public void Put (int id, [FromBody] string value) { }
     }
