@@ -17,7 +17,7 @@ namespace Rocket.Controllers {
             _context = context;
         }
 
-         // GET api/elevators/5
+        // GET api/elevators/5
         [HttpGet ("{id}", Name = "GetElevators")]
         public ActionResult GetById (string Status, long id) {
             var item = _context.Elevators.Find (id);
@@ -41,14 +41,22 @@ namespace Rocket.Controllers {
             foreach (var e in list) {
 
                 if (e.Status == "Alarm" || e.Status == "Inactive") {
-                    list_alarm_inac.Add(e);
+                    list_alarm_inac.Add (e);
                 }
             }
             return list_alarm_inac;
         }
 
-        // PUT api/elevators
-        [HttpPut ("{id}")]
-        public void Put (int id, [FromBody] string value) { }
+        // // PUT api/elevators
+        // [HttpPut ("{id}")]
+        // public ActionResult Update (long id, Elevators status) {
+        //     var elv = _context.Elevators.Find (id);
+        //     if (elv == null) {
+        //         return NotFound ();
+        //     }
+        //     _context.Elevators.Update (bat);
+        //     _context.SaveChanges ();
+        //     return NoContent ();
+        // }
     }
 }
