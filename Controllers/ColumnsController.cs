@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Rocket.Models;
@@ -10,9 +8,9 @@ namespace Rocket.Controllers {
     [Route ("api/columns")]
     [ApiController]
     public class ColumnsController : ControllerBase {
-        private readonly David_appContext _context;
+        private readonly MySql_appContext _context;
 
-        public ColumnsController (David_appContext context) {
+        public ColumnsController (MySql_appContext context) {
             _context = context;
         }
 
@@ -48,13 +46,13 @@ namespace Rocket.Controllers {
 
         // PUT api/batteries/5
         [HttpPut ("{id}")]
-        public ActionResult Update (long id, Columns Column) {
+        public ActionResult Update (long id, Columns column) {
             var col = _context.Columns.Find (id);
             if (col == null) {
                 return NotFound ();
             }
 
-            col.Status = Column.Status;
+            col.Status = column.Status;
 
             _context.Columns.Update (col);
             _context.SaveChanges ();

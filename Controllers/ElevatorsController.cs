@@ -1,19 +1,17 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Rocket.Models;
 
 namespace Rocket.Controllers {
 
-    [Route ("api/Elevator")]
+    [Route ("api/elevators")]
     [ApiController]
-    public class ElevatorControllers : ControllerBase {
-        private readonly David_appContext _context;
+    public class ElevatorsControllers : ControllerBase {
+        private readonly MySql_appContext _context;
 
-        public ElevatorControllers (David_appContext context) {
+        public ElevatorsControllers (MySql_appContext context) {
             _context = context;
         }
 
@@ -47,7 +45,7 @@ namespace Rocket.Controllers {
             return list_alarm_inac;
         }
 
-        // PUT api/elevators
+        // PUT api/elevators/5
         [HttpPut ("{id}")]
         public ActionResult Update (long id, Elevators elevator) {
             var elv = _context.Elevators.Find (id);
@@ -56,7 +54,7 @@ namespace Rocket.Controllers {
             }
 
             elv.Status = elevator.Status;
-            
+
             _context.Elevators.Update (elv);
             _context.SaveChanges ();
             return NoContent ();
