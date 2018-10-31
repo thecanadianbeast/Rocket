@@ -47,16 +47,19 @@ namespace Rocket.Controllers {
             return list_alarm_inac;
         }
 
-        // // PUT api/elevators
-        // [HttpPut ("{id}")]
-        // public ActionResult Update (long id, Elevators status) {
-        //     var elv = _context.Elevators.Find (id);
-        //     if (elv == null) {
-        //         return NotFound ();
-        //     }
-        //     _context.Elevators.Update (bat);
-        //     _context.SaveChanges ();
-        //     return NoContent ();
-        // }
+        // PUT api/elevators
+        [HttpPut ("{id}")]
+        public ActionResult Update (long id, Elevators elevator) {
+            var elv = _context.Elevators.Find (id);
+            if (elv == null) {
+                return NotFound ();
+            }
+
+            elv.Status = elevator.Status;
+            
+            _context.Elevators.Update (elv);
+            _context.SaveChanges ();
+            return NoContent ();
+        }
     }
 }
