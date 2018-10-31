@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Rocket.Models
-{
-    public partial class Buildings
-    {
-        public Buildings()
-        {
-            Batteries = new HashSet<Batteries>();
-            BuildingDetails = new HashSet<BuildingDetails>();
+namespace Rocket.Models {
+    public partial class Buildings {
+        public Buildings () {
+            Batteries = new HashSet<Batteries> ();
+            BuildingDetails = new HashSet<BuildingDetails> ();
         }
 
         public long Id { get; set; }
