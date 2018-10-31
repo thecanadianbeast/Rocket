@@ -36,14 +36,14 @@ namespace Rocket.Controllers {
 
         // PUT api/batteries/5
         [HttpPut ("{id}")]
-        public ActionResult Update (long id, Batteries status) {
+        public ActionResult Update (long id, Batteries battery) {
             var bat  = _context.Batteries.Find (id);
             if (bat == null) {
                 return NotFound ();
             }
 
             // bat.isComplete = status.isComplete;
-            bat.Status = status.Status;
+            bat.Status = battery.Status;
 
             _context.Batteries.Update (bat);
             _context.SaveChanges ();
