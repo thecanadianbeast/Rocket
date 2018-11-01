@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Rocket.Models {
     public partial class Buildings {
@@ -23,6 +24,7 @@ namespace Rocket.Models {
 
         public Addresses Address { get; set; }
         public Customers Customer { get; set; }
+        [JsonIgnore]
         public ICollection<Batteries> Batteries { get; set; }
         public ICollection<BuildingDetails> BuildingDetails { get; set; }
     }

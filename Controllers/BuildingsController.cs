@@ -17,7 +17,7 @@ namespace Rocket.Controllers {
 
         // GET api/buildings
         [HttpGet]
-        public ActionResult<List<JObject>> GetAll () {
+        public ActionResult<List<Buildings>> GetAll () {
             var list = _context.Buildings
                 .Include (bu => bu.Batteries)
                 .ThenInclude (b => b.Columns)
@@ -56,22 +56,22 @@ namespace Rocket.Controllers {
             }
 
             // To build a "json object" list of buildings
-            var jsons = new List<JObject> ();
-            foreach (var b in list_buildings_intervention) {
-                var json = new JObject ();
-                json["id"] = b.Id;
-                json["business name"] = _context.Customers.Find (b.CustomerId).BusinessName;
-                json["building name"] = b.BuildingName;
-                json["building address"] = $"{_context.Addresses.Find(b.AddressId).StreetAddress}, {_context.Addresses.Find(b.AddressId).City} {_context.Addresses.Find(b.AddressId).State}  {_context.Addresses.Find(b.AddressId).ZipCode}";
-                json["administrator name"] = b.AdministratorFullName;
-                json["administrator phone"] = b.AdministratorPhone;
-                json["administrator email"] = b.AdministratorEmail;
-                json["technician name"] = b.TechnicianFullName;
-                json["technician phone"] = b.TechnicianPhone;
-                json["technician email"] = b.TechnicianEmail;
-                jsons.Add (json);
-            }
-            return jsons;
+            // var jsons = new List<JObject> ();
+            // foreach (var b in list_buildings_intervention) {
+            //     var json = new JObject ();
+            //     json["id"] = b.Id;
+            //     json["business name"] = _context.Customers.Find (b.CustomerId).BusinessName;
+            //     json["building name"] = b.BuildingName;
+            //     json["building address"] = $"{_context.Addresses.Find(b.AddressId).StreetAddress}, {_context.Addresses.Find(b.AddressId).City} {_context.Addresses.Find(b.AddressId).State}  {_context.Addresses.Find(b.AddressId).ZipCode}";
+            //     json["administrator name"] = b.AdministratorFullName;
+            //     json["administrator phone"] = b.AdministratorPhone;
+            //     json["administrator email"] = b.AdministratorEmail;
+            //     json["technician name"] = b.TechnicianFullName;
+            //     json["technician phone"] = b.TechnicianPhone;
+            //     json["technician email"] = b.TechnicianEmail;
+            //     jsons.Add (json);
+            // }
+            return list_buildings_intervention;
         }
     }
 }
