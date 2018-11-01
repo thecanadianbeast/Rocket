@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Rocket.Models
-{
-    public partial class Columns
-    {
-        public Columns()
-        {
-            Elevators = new HashSet<Elevators>();
+namespace Rocket.Models {
+    public partial class Columns {
+        public Columns () {
+            Elevators = new HashSet<Elevators> ();
         }
 
         public long Id { get; set; }

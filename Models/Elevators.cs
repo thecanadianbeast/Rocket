@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Rocket.Models
-{
-    public partial class Elevators
-    {
+namespace Rocket.Models {
+    public partial class Elevators {
         public long Id { get; set; }
         public long? ColumnId { get; set; }
         public int? SerialNumber { get; set; }

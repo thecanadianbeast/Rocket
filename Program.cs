@@ -13,11 +13,6 @@ namespace Rocket {
     public class Program {
         public static void Main (string[] args) {
             CreateWebHostBuilder (args).Build ().Run ();
-            // var dbColumn = new David_appContext();
-            // var columns = dbColumn.Columns.ToList();
-            // foreach (var c in columns) {
-            //     System.Console.WriteLine($"Status:{c.Status} Type:{c.BuildingType}");
-            // }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder (string[] args) =>
