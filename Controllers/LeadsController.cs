@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Rocket.Models;
 
-namespace Rocket.Controllers
-{
+namespace Rocket.Controllers {
     [Route ("api/leads")]
     [ApiController]
     public class LeadsController : ControllerBase {
@@ -28,12 +27,11 @@ namespace Rocket.Controllers
             DateTime currentDate = DateTime.Now.AddDays (-30);
             foreach (var l in listl) {
                 if (l.CreatedAt >= currentDate) {
-                    if (l.Customers.ToList().Count == 0) {
+                    if (l.Customers.ToList ().Count == 0) {
                         list_lead.Add (l);
                     }
                 }
             }
-    
             return list_lead;
         }
     }
