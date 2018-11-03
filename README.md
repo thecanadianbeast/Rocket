@@ -78,4 +78,9 @@
 #### 9- *To Get a Leads list that are not our clients yet since the last 30 days, do* : </br>
 &nbsp;&nbsp;&nbsp;&nbsp;GET https://rocketapi.azure-api.net/api/leads </br>
 &nbsp;&nbsp;&nbsp;&nbsp;SEND 
-	
+</br>
+</br>
+</br>
+
+#### Authors : 
+David Boutin, Luna-Victoria Leclerc, Dany Boucher, Dominic Bonneau and Valerie Beaupre 
