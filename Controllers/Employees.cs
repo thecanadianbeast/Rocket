@@ -20,7 +20,7 @@ namespace Rocket.Controllers {
         /// GET api/users
         [HttpGet ("{email}")]
         public ActionResult GetById (string Email) {
-            var item = _context.Columns.Find (Email);
+            var item = _context.Employees.Find (Email);
             if (item == null) {
                 return NotFound ("Not found");
             }
