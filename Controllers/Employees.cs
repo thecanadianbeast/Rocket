@@ -17,18 +17,16 @@ namespace Rocket.Controllers {
         }
 
 
-        // GET api/users/list
-        [HttpGet]
-        public ActionResult<List<Employees>> GetAll () {
-            List<Employees> list_email = new List<Employees> ();
-
-            foreach (var e in list_email) {
-
-                if (e.Email == "") {
-                    list_email.Add (e);
-                }
+        /// GET api/users
+        [HttpGet ("{email}")]
+        public ActionResult GetById (string Email) {
+            var item = _context.Columns.Find (Email);
+            if (item == null) {
+                return NotFound ("Not found");
             }
-            return list_email;
+            var json = new JObject ();
+            json["email"] = item.Email;
+            return Content (json.ToString (), "application/json");
         }
 
     }
