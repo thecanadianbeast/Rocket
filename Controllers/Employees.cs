@@ -17,9 +17,10 @@ namespace Rocket.Controllers {
         // GET api/users
         [HttpGet]
         public ActionResult<List<Employees>> GetAll () {
+            var listl = _context.Employees;
 
             List<Employees> list_employees = new List<Employees> ();
-            foreach (var e in list_employees) {
+            foreach (var e in listl) {
                 list_employees.Add (e);
             }
             return list_employees;
