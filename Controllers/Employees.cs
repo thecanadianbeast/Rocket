@@ -1,8 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json.Linq;
 using Rocket.Models;
 
 namespace Rocket.Controllers {
@@ -20,12 +19,10 @@ namespace Rocket.Controllers {
             var listl = _context.Employees;
 
             List<Employees> list_employees = new List<Employees> ();
-            foreach (var e in listl) {
+            foreach (var e in _context.Employees) {
                 list_employees.Add (e);
             }
             return list_employees;
         }
     }
-}
-}
 }
