@@ -17,14 +17,14 @@ namespace Rocket.Controllers {
 
         // GET api/elevators/5
         [HttpGet ("{id}", Name = "GetElevators")]
-        public ActionResult GetById (string Status, long id) {
+        public string GetById (long id) {
             var item = _context.Elevators.Find (id);
+            var status = item.Status;
             if (item == null) {
-                return NotFound ("Not Found");
+                return "Not Found";
             }
-            var json = new JObject ();
-            json["status"] = item.Status;
-            return Content (json.ToString (), "application/json");
+            
+            return status;
         }
 
         // GET api/elevators/list
