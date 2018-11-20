@@ -23,7 +23,7 @@ namespace Rocket.Controllers {
             if (item == null) {
                 return "Not Found";
             }
-            
+
             return status;
         }
 
@@ -41,6 +41,22 @@ namespace Rocket.Controllers {
                 if (e.Status == "Alarm" || e.Status == "Inactive") {
                     list_alarm_inac.Add (e);
                 }
+            }
+            return list_alarm_inac;
+        }
+
+        // GET api/elevators/total
+        [HttpGet]
+        [Route ("api/elevators/total")]
+        public ActionResult<List<Elevators>> GetAllElevator () {
+            var list = _context.Elevators.ToList ();
+            if (list == null) {
+                return NotFound ("Not Found");
+            }
+            List<Elevators> list_alarm_inac = new List<Elevators> ();
+
+            foreach (var e in list) {
+                list_alarm_inac.Add (e);
             }
             return list_alarm_inac;
         }
