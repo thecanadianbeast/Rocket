@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Linq;
 using Rocket.Models;
+using System.Linq;
+using System.Collections.Generic;
+
 
 namespace Rocket.Controllers {
     [Route ("api/batteries")]
@@ -22,6 +25,20 @@ namespace Rocket.Controllers {
             var json = new JObject ();
             json["status"] = item.Status;
             return Content (json.ToString (), "application/json");
+        }
+        // GET api/batteries/total
+        [HttpGet ("total")]
+        public ActionResult<List<Batteries>> GetAllBatteries () {
+            var list2 = _context.Batteries.ToList ();
+            if (list2 == null) {
+                return NotFound ("Not Found");
+            }
+            List<Batteries> list_bat = new List<Batteries> ();
+
+            foreach (var e in list2) {
+                list_bat.Add (e);
+            }
+            return list_bat;
         }
 
         // PUT api/batteries/5
