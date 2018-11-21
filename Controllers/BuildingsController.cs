@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using Rocket.Models;
+using System.Linq;
+
 
 namespace Rocket.Controllers {
 
@@ -13,6 +15,21 @@ namespace Rocket.Controllers {
 
         public BuildingsControllers (MySql_appContext context) {
             _context = context;
+        }
+
+        [Route("total")]
+        [HttpGet]
+        public ActionResult<List<Buildings>> GetAllBuildings () {
+            var list2 = _context.Buildings.ToList();
+            if (list2 == null) {
+                return NotFound ("Not Found");
+            }
+            List<Buildings> list_buildings = new List<Buildings> ();
+
+            foreach (var e in list2) {
+                list_buildings.Add (e);
+            }
+            return list_buildings;
         }
 
         // GET api/buildings

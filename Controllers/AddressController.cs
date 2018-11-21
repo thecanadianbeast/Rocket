@@ -16,7 +16,7 @@ namespace Rocket.Controllers {
             _context = context;
         }
 
-        // get all customers
+       
         [HttpGet]
         public ActionResult<List<string>> GetAll () {
 
