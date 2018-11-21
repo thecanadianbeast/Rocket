@@ -6,7 +6,9 @@ using Rocket.Models;
 
 namespace Rocket.Controllers {
 
-    [Route ("api/elevators")]
+ 
+    // [Route ("api/elevators")]
+    [Route("api/elevators")]
     [ApiController]
     public class ElevatorsControllers : ControllerBase {
         private readonly MySql_appContext _context;
@@ -16,7 +18,8 @@ namespace Rocket.Controllers {
         }
 
         // GET api/elevators/5
-        [HttpGet ("{id}", Name = "GetElevators")]
+        [Route("{id}")]
+        [HttpGet]
         public string GetById (long id) {
             var item = _context.Elevators.Find (id);
             var status = item.Status;
@@ -28,6 +31,7 @@ namespace Rocket.Controllers {
         }
 
         // GET api/elevators/list
+        [Route("")]
         [HttpGet]
         public ActionResult<List<Elevators>> GetAll () {
             var list = _context.Elevators.ToList ();
@@ -46,23 +50,24 @@ namespace Rocket.Controllers {
         }
 
         // GET api/elevators/total
+        [Route("total")]
         [HttpGet]
-        [Route ("api/elevators/total")]
         public ActionResult<List<Elevators>> GetAllElevator () {
-            var list = _context.Elevators.ToList ();
-            if (list == null) {
+            var list2 = _context.Elevators.ToList ();
+            if (list2 == null) {
                 return NotFound ("Not Found");
             }
             List<Elevators> list_alarm_inac = new List<Elevators> ();
 
-            foreach (var e in list) {
+            foreach (var e in list2) {
                 list_alarm_inac.Add (e);
             }
             return list_alarm_inac;
         }
 
         // PUT api/elevators/5
-        [HttpPut ("{id}")]
+        [Route("{id}")]
+        [HttpPut]
         public ActionResult Update (long id, Elevators elevator) {
             var elv = _context.Elevators.Find (id);
             if (elv == null) {
