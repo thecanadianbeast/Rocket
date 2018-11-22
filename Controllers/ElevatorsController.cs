@@ -17,17 +17,33 @@ namespace Rocket.Controllers {
             _context = context;
         }
 
-        // GET api/elevators/5
-        [Route("{id}")]
-        [HttpGet]
-        public string GetById (long id) {
-            var item = _context.Elevators.Find (id);
-            var status = item.Status;
-            if (item == null) {
-                return "Not Found";
-            }
+        // ------------------------- APP_MOBILE ------------------------- //
+        // // GET api/elevators/5 // ------------------------- APP_MOBILE
+        // [Route("{id}")]
+        // [HttpGet]
+        // public string GetById (long id) {
+        //     var item = _context.Elevators.Find (id);
+        //     var status = item.Status;
+        //     if (item == null) {
+        //         return "Not Found";
+        //     }
 
-            return status;
+        //     return status;
+        // }
+        // ------------------------- APP_MOBILE ------------------------- //
+
+        [HttpGet("{id}")]
+        public ActionResult<Elevators> Get(long id)
+        {
+            var item = _context.Elevators.Find(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            var res = new JObject();
+            res["id"] = item.Id;
+            res["status"] = item.Status;
+            return Content(res.ToString(), "application/json");
         }
 
         // GET api/elevators/list
