@@ -33,6 +33,20 @@ namespace Rocket.Controllers {
         }
 
         // GET api/buildings
+        [HttpGet("{id}")]
+        public ActionResult<Buildings> Get(long id)
+        {
+            var item = _context.Buildings.Find(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            var res = new JObject();
+            res["id"] = item.Id;
+            res["BuildingName"] = item.BuildingName;
+            return Content(res.ToString(), "application/json");
+        }
+
         [HttpGet]
         public ActionResult<List<Buildings>> GetAll () {
             var list = _context.Buildings
