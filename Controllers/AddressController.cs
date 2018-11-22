@@ -20,9 +20,9 @@ namespace Rocket.Controllers {
         [HttpGet]
         public ActionResult<List<string>> GetAll () {
 
-            var _result = _context.Addresses.Select (s => s.City).Distinct ();
-
-            return _result.ToList ();
+            //var _result = _context.Addresses.Select (s => s.City).Distinct ();
+            var city = _context.Addresses.Where(c => _context.Buildings.Select(b => b.AddressId).Contains(c.Id)).Select(c =>c.City).Distinct();
+            return city.ToList ();
 
 
         }
