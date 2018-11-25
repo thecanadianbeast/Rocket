@@ -16,21 +16,7 @@ namespace Rocket.Controllers {
         public ElevatorsControllers (MySql_appContext context) {
             _context = context;
         }
-
-        // ------------------------- APP_MOBILE ------------------------- //
-        // // GET api/elevators/5 // ------------------------- APP_MOBILE
-        // [Route("{id}")]
-        // [HttpGet]
-        // public string GetById (long id) {
-        //     var item = _context.Elevators.Find (id);
-        //     var status = item.Status;
-        //     if (item == null) {
-        //         return "Not Found";
-        //     }
-
-        //     return status;
-        // }
-        // ------------------------- APP_MOBILE ------------------------- //
+        
 
         [HttpGet("{id}")]
         public ActionResult<Elevators> Get(long id)
