@@ -83,4 +83,4 @@
 </br>
 
 #### Authors : 
-David Boutin, Luna-Victoria Leclerc, Dany Boucher, Dominic Bonneau and Valerie Beaupre 
+David Boutin, Luna-Victoria Leclerc, Dany Boucher, Dominic Bonneau, Valerie Beaupre & Stéphane Bruyère. 
